@@ -36,8 +36,10 @@ export default class TableController {
       this.addRow()
     }
 
+    this.handleColorSelect()
     this.handleColumnHeaderStyle()
     this.handleRowHeaderStyle()
+    //this.handleColorSelect()
 
     /**
      * @usage see https://www.contentful.com/developers/docs/extensibility/ui-extensions/sdk-reference/#field
@@ -139,6 +141,35 @@ export default class TableController {
         this.changeTag(firstCell, 'td')
       })
     }
+  }
+
+  handleColorSelect = () => {
+      const firstRowCells = Array.from(this.table.rows[0].cells)
+      firstRowCells.forEach((cellElem, columnIndex) => {
+        // const color = cellElem.dataset.color
+        // if (color) {
+        //   cellElem.style.backgroundColor = color
+        // }
+        let colorSelect = cellElem.querySelector('select')
+        if (!colorSelect) {
+          console.log('Adding color select')
+          colorSelect = document.createElement('select')
+          const colors = ['Red', 'Green', 'Blue', 'Yellow', 'Black', 'White']
+          colors.forEach((color) => {
+            const option = document.createElement('option')
+            option.value = color.toLowerCase()
+            option.text = color
+            colorSelect.appendChild(option)
+          })
+          colorSelect.onchange = () => {
+            this.state.columnColors[columnIndex] = colorSelect.value
+            this.save()
+            //this.applyColumnColors()
+          }
+          console.log(cellElem.isConnected)
+          cellElem.appendChild(colorSelect)
+        }
+      })
   }
 
   /**
@@ -348,7 +379,9 @@ export default class TableController {
       this.state.tableData[index].push(undefined)
       this.save()
     })
+    this.handleColorSelect()
     this.handleColumnHeaderStyle()
+    //this.handleColorSelect()
   }
 
   /**
