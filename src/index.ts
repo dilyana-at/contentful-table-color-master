@@ -7,6 +7,7 @@ import {
   createMockExtension,
   getInitialTableData,
   Extension,
+  getInitialColumnColorData,
 } from './utils'
 
 const contentElem = document.getElementById('table-extension-content')
@@ -48,8 +49,11 @@ const handleInitialization = (extension?: Extension) => {
         columns: minColumns,
         rows: minRows,
       }),
+      columnColors: getInitialColumnColorData({columns: minColumns}),
     }
   }
+
+  console.log('Table extension initialized with value:', value);
 
   const tableController = new TableController({
     table: tableElem,

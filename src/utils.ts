@@ -43,7 +43,7 @@ export type TableData = Array<Array<string>>
  * Storage values for the extension's content field
  */
 export interface ExtensionValues {
-  columnColors: any
+  columnColors: string[]
   useColumnHeader: boolean
   useRowHeader: boolean
   tableData: TableData
@@ -92,6 +92,16 @@ export const getInitialTableData = ({
   rows: number
   columns: number
 }): TableData => Array.from(new Array(rows), () => new Array(columns))
+
+/**
+ * Seed the tableData with initial data, minimum rows/columns
+ * should at least be passed in
+ */
+export const getInitialColumnColorData = ({
+  columns
+}: {
+  columns: number
+}): string[] => new Array(columns)
 
 /**
  * Keep a number with the boundaries of a minimum and maximum

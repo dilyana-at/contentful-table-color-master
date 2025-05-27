@@ -162,7 +162,7 @@ export default class TableController {
             colorSelect.appendChild(option)
           })
           colorSelect.onchange = () => {
-            this.state.columnColors[columnIndex] = colorSelect.value
+            this.state.columnColors[columnIndex] = colorSelect.textContent
             this.save()
             //this.applyColumnColors()
           }
