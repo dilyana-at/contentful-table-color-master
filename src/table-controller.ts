@@ -146,27 +146,40 @@ export default class TableController {
   handleColorSelect = () => {
       const firstRowCells = Array.from(this.table.rows[0].cells)
       firstRowCells.forEach((cellElem, columnIndex) => {
-        // const color = cellElem.dataset.color
-        // if (color) {
-        //   cellElem.style.backgroundColor = color
-        // }
+        // Skip the first cell 
+        if (columnIndex === 0) {
+          return
+        }
         let colorSelect = cellElem.querySelector('select')
         if (!colorSelect) {
-          console.log('Adding color select')
           colorSelect = document.createElement('select')
-          const colors = ['Red', 'Green', 'Blue', 'Yellow', 'Black', 'White']
-          colors.forEach((color) => {
+          const colors = ['None', 'Red', 'Green', 'Blue', 'Yellow']
+          const hexColor = ['-', '#FF0000', '#00FF00', '#0000FF', '#FFFF00']
+          for (let i = 0; i < colors.length; i++) {
             const option = document.createElement('option')
-            option.value = color.toLowerCase()
-            option.text = color
+            option.value = hexColor[i]
+            option.text = colors[i]
+            option.style.backgroundColor = hexColor[i] === '-' ? 'transparent' : hexColor[i];
             colorSelect.appendChild(option)
-          })
+          }
+          // Set the selected color based on the current state
+          if (this.state.columnColors && this.state.columnColors[columnIndex]) {
+            const selectedColor = this.state.columnColors[columnIndex]
+            colorSelect.value = selectedColor || '-'
+          }
+
+          // Ensure columnColors array is initialized and has enough space
+          if (!this.state.columnColors) {
+            this.state.columnColors = [];
+          }
+          if (this.state.columnColors.length <= columnIndex) {
+            this.state.columnColors[columnIndex] = ''; // Initialize with a default value
+          }
           colorSelect.onchange = () => {
-            this.state.columnColors[columnIndex] = colorSelect.textContent
+            this.state.columnColors[columnIndex] = colorSelect.value
             this.save()
             //this.applyColumnColors()
           }
-          console.log(cellElem.isConnected)
           cellElem.appendChild(colorSelect)
         }
       })

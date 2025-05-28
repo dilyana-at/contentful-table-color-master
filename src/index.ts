@@ -53,8 +53,6 @@ const handleInitialization = (extension?: Extension) => {
     }
   }
 
-  console.log('Table extension initialized with value:', value);
-
   const tableController = new TableController({
     table: tableElem,
     state: value,

@@ -3,7 +3,7 @@ import { clamp } from './utils'
 
 export const minColumns = 2
 export const minRows = 2
-const maxColumns = 10
+const maxColumns = 5
 const maxRows = 30
 
 const columnsInputElem = document.getElementById(
