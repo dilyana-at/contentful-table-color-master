@@ -8,3 +8,5 @@ node_modules
 .vscode
 .cache
 dist
+gh-pages-key
+gh-pages-key.pub
