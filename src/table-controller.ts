@@ -153,13 +153,13 @@ export default class TableController {
         let colorSelect = cellElem.querySelector('select')
         if (!colorSelect) {
           colorSelect = document.createElement('select')
-          const colors = ['None', 'Red', 'Green', 'Blue', 'Yellow']
-          const hexColor = ['-', '#FF0000', '#00FF00', '#0000FF', '#FFFF00']
+          const colors = ['No border colour', 'Black', 'Gold', 'Silver', 'Bronze', 'Light Lilac', 'Light Blue']
+          const hexColor = ['', '#000000', '#FFD245', '#D8D8D8', '#FFB886', '#BFBFFD', '#80D0E5']
           for (let i = 0; i < colors.length; i++) {
             const option = document.createElement('option')
             option.value = hexColor[i]
             option.text = colors[i]
-            option.style.backgroundColor = hexColor[i] === '-' ? 'transparent' : hexColor[i];
+            option.style.color = hexColor[i] === '' ? 'transparent' : hexColor[i];
             colorSelect.appendChild(option)
           }
           // Set the selected color based on the current state
