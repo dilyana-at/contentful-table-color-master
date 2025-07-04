@@ -159,7 +159,7 @@ export default class TableController {
             const option = document.createElement('option')
             option.value = hexColor[i]
             option.text = colors[i]
-            option.style.color = hexColor[i] === '' ? 'transparent' : hexColor[i];
+            //option.style.color = hexColor[i] === '' ? 'transparent' : hexColor[i];
             colorSelect.appendChild(option)
           }
           // Set the selected color based on the current state
