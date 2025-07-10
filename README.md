@@ -58,6 +58,19 @@ Install the dependencies:
 ```sh
 npm install
 ```
+If npm install throws errors, installing the packages one by one and fixing as suggested works 
+//commands for npm packages
+npm install contentful-ui-extensions-sdk@^3.23.2
+npm install contentful-cli@^1.4.36 --save-dev
+npm install eslint@^7.10.0 --save-dev
+npm install gh-pages@^3.1.0 --save-dev
+npm install husky@^4.3.0 --save-dev
+npm install lint-staged@^10.4.0 --save-dev
+npm install parcel-bundler@^1.12.4 --save-dev
+npm install rimraf@^3.0.2 --save-dev
+npm install sass@^1.26.11 --save-dev
+npm install sortpack@^2.1.9 --save-dev
+npm install typescript@^4.0.3 --save-dev
 
 ## Publish
 
